@@ -1,0 +1,20 @@
+@font-face {
+    font-family: a12;
+    src:
+        local(KoreanGD12R),
+        url(./a12.woff) format('woff');
+}
+
+@font-face {
+    font-family: a15;
+    src:
+        local(KoreanGD15R),
+        url(./a15.woff) format('woff');
+}
+
+@font-face {
+    font-family: a18;
+    src:
+        local(KoreanGD18R),
+        url(./a18.woff) format('woff');
+}
