@@ -1,0 +1,36 @@
+@import url("../../assets/fonts/a.css");
+
+body,
+html {
+  margin: 0;
+}
+
+.Link {
+  width: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 20px;
+
+  color: #ffffff;
+  background-color: #f5f5f5;
+  border-radius: 27px;
+  cursor: pointer;
+}
+
+.Link__text {
+  font-family: "a15";
+}
+
+.Link__icon {
+  width: 24px;
+  height: 24px;
+
+  margin-left: 6px;
+  fill: #ffffff;
+}
+
+.blueBg {
+  background-color: #646ef8;
+}
