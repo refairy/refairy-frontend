@@ -1,0 +1,38 @@
+@import url("../../assets/fonts/a.css");
+
+html,
+body {
+  margin: 0;
+}
+
+.ShortcutButton {
+  width: fit-content;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 15px 33px;
+  cursor: pointer;
+
+  color: #fff;
+  background-color: #646ef8;
+  border-radius: 12px;
+}
+
+.ShortcutButton__number {
+  padding: 2px 5px;
+
+  color: #646ef8;
+  font-size: 15px;
+  font-family: "a18";
+
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.ShortcutButton__text {
+  margin-left: 6px;
+
+  font-size: 18px;
+  font-family: "a15";
+}

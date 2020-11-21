@@ -1,4 +1,9 @@
-@import './assets/fonts/a.css';
+html,
+body {
+  margin: 0;
+}
+
+@import "./assets/fonts/a.css";
 * {
-    font-family: 'a12';
+  font-family: "a12";
 }

@@ -1,10 +1,11 @@
+@import url("../../assets/fonts/a.css");
+
 html,
 body {
   margin: 0;
 }
 
-/* RECENT SEARCH BOX - 최근 검사 내역 */
-.searchHistory {
+.SearchHistory {
   width: fit-content;
 
   position: relative;
@@ -17,7 +18,7 @@ body {
   border-radius: 12px;
 }
 
-.searchHistory__content {
+.SearchHistory__content {
   width: 200px;
 
   display: flex;
@@ -26,13 +27,13 @@ body {
   float: left;
 }
 
-.searchHistory__time {
+.SearchHistory__time {
   color: #666666;
   font-size: 14px;
   font-family: "a18";
 }
 
-.searchHistory__title {
+.SearchHistory__title {
   width: 100%;
 
   font-size: 18px;
@@ -50,7 +51,7 @@ body {
   -webkit-box-orient: vertical;
 }
 
-.searchHistory__url {
+.SearchHistory__url {
   width: 100%;
 
   word-wrap: break-word;
@@ -60,7 +61,7 @@ body {
   font-family: "a15";
 }
 
-.searchHistory__circle {
+.SearchHistory__circle {
   width: 100px;
   height: 100px;
 
