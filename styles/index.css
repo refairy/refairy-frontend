@@ -1,0 +1,113 @@
+@import "../assets/fonts/a.css";
+
+body {
+  background-color: #ffffff;
+  border-top: 8px solid #646ef8;
+}
+
+#header {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+  margin-top: 180px;
+}
+
+#logo {
+  font-family: "a18";
+  font-size: 72px;
+  text-align: center;
+}
+
+#quote {
+  font-size: 24px;
+  text-align: center;
+
+  margin-top: 15px;
+}
+
+#quoteKey {
+  font-family: "a15";
+}
+
+#searchBox {
+  width: fit-content;
+  height: 72px;
+
+  margin-top: 80px;
+}
+
+#searchInput {
+  width: 711px;
+  height: 100%;
+
+  float: left;
+  padding: 0px 71px 0px 30px;
+
+  font-family: "a15";
+  font-size: 18px;
+
+  background-color: #f7f7f7;
+  border: none;
+  border-radius: 18px 0px 0px 18px;
+}
+
+#searchInput::placeholder {
+  color: #555555;
+}
+
+#searchButton {
+  width: 72px;
+  height: 100%;
+
+  float: left;
+  cursor: pointer;
+  margin-left: -41px;
+
+  background-color: #646ef8;
+  border: none;
+  border-radius: 18px;
+}
+
+#refairyLab {
+  margin-top: 40px;
+}
+
+#searchHistoryBox {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+
+  margin-top: 80px;
+}
+
+#searchHistoryWrap {
+  width: 1480px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#searchHistoryTitle {
+  font-family: "a15";
+  font-size: 24px;
+  color: #000000;
+
+  margin-bottom: 24px;
+}
+
+#searchHistoryList {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}

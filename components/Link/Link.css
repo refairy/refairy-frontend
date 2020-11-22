@@ -21,6 +21,7 @@ html {
 
 .Link__text {
   font-family: "a15";
+  opacity: 0.7;
 }
 
 .Link__icon {
@@ -28,9 +29,14 @@ html {
   height: 24px;
 
   margin-left: 6px;
+  opacity: 0.7;
   fill: #ffffff;
 }
 
 .blueBg {
   background-color: #646ef8;
+}
+
+.blackFont {
+  color: #000000;
 }
