@@ -37,6 +37,10 @@ html {
   background-color: #646ef8;
 }
 
+.blueBg > * {
+  opacity: 1;
+}
+
 .blackFont {
   color: #000000;
 }
