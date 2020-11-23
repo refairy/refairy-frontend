@@ -4,16 +4,41 @@ body {
 }
 
 #report {
-  width: 684px;
-  height: calc(100% - 72px);
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   float: left;
-  padding: 36px 48px;
   background-color: #ffffff;
+}
+
+#report.full {
+  width: 684px;
+  height: calc(100% - 72px);
+  padding: 36px 48px;
+}
+
+#report.medium {
+  width: 220px;
+  padding: 40px;
+  position: absolute;
+  left: 80px;
+  bottom: 80px;
+  box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.07);
+  border-radius: 24px;
+}
+
+#report.small {
+  width: 161px;
+  padding: 20px;
+  padding-bottom: 4px;
+  position: absolute;
+  left: 77px;
+  bottom: 0px;
+  box-shadow: 0px 0px 42px rgba(0, 0, 0, 0.07);
+  border-radius: 18px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
 #reportSizeControler {
@@ -24,14 +49,26 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0px 10px;
-
   position: absolute;
-  top: 36px;
-  left: 690px;
 
   background: #f1f1f1;
   opacity: 0.6;
   border-radius: 51px;
+}
+
+.full #reportSizeControler {
+  top: 36px;
+  left: 690px;
+}
+
+.medium #reportSizeControler {
+  top: 40px;
+  left: 208px;
+}
+
+.small #reportSizeControler {
+  top: 20px;
+  right: 20px;
 }
 
 #makeSmall,
@@ -42,6 +79,7 @@ body {
 
 .unable {
   opacity: 0.3;
+  cursor: default !important;
 }
 
 #reportResult {
@@ -59,6 +97,11 @@ body {
   font-size: 24px;
 }
 
+.small #reportTitle {
+  margin-top: 3.5px;
+  font-size: 18px;
+}
+
 #reportID {
   font-family: "a15";
   font-size: 18px;
@@ -68,12 +111,27 @@ body {
   margin-left: 10px;
 }
 
+.medium #reportID,
+.small #reportID {
+  display: none;
+}
+
 #reportURL {
   font-family: "a15";
   font-size: 16px;
   opacity: 0.5;
+}
 
+.full #reportURL {
   margin-top: 6px;
+}
+
+.medium #reportURL {
+  margin-top: 12px;
+}
+
+.small #reportURL {
+  display: none;
 }
 
 #reportURL > img {
@@ -84,12 +142,34 @@ body {
   margin-right: 6px;
 }
 
+#reportURL > span {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
 #reportCount {
   font-family: "a15";
   font-size: 18px;
   color: #ef6eac;
+}
 
+.full #reportCount {
   margin: 24px 0px;
+}
+
+.medium #reportCount {
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.small #reportCount {
+  margin-top: 12px;
+  font-size: 15px;
 }
 
 #reportCount > img {
@@ -103,11 +183,22 @@ body {
   margin-right: 10px;
 }
 
+.small #reportCount > img {
+  width: 18px;
+  height: 18px;
+}
+
 #reportButtons {
   width: 100%;
   height: 48px;
+}
 
+.full #reportButtons {
   margin-bottom: 24px;
+}
+
+.small #reportButtons {
+  display: none;
 }
 
 #reportShare {
@@ -125,6 +216,7 @@ body {
   font-family: "a18";
   font-size: 16px;
   color: #646ef8;
+  opacity: 0.7;
 
   position: relative;
   left: 18px;
@@ -148,6 +240,11 @@ body {
   border-radius: 24px;
 }
 
+.medium #reportSentences,
+.small #reportSentences {
+  display: none;
+}
+
 .reportSentence {
   margin-bottom: 24px;
 }
@@ -165,6 +262,11 @@ body {
   cursor: pointer;
 }
 
+.medium #reportError,
+.small #reportError {
+  display: none;
+}
+
 #reportErrorIcon {
   width: 18px;
   height: 18px;
@@ -173,7 +275,9 @@ body {
   margin-right: 6px;
 }
 
-#reportHistory {
+.medium #reportHistory,
+.small #reportHistory {
+  display: none;
 }
 
 #reportHistoryTitle {
@@ -189,10 +293,17 @@ body {
 }
 
 #view {
-  width: calc(100% - 783px);
   height: 100%;
-
   float: right;
   background-color: #e9f8f5;
   border-left: 3px solid #ebebeb;
+}
+
+.full + #view {
+  width: calc(100% - 783px);
+}
+
+.medium + #view,
+.small + #view {
+  width: 100%;
 }
