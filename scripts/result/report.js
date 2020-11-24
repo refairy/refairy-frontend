@@ -26,10 +26,13 @@ minusBtn.addEventListener("click", () => {
       case "full":
         document.getElementById("report").className = "medium";
         document.getElementById("reportErrorBack").style.display = "none";
+        document.getElementById("reportIsError").style.display = "none";
         break;
       case "medium":
         document.getElementById("report").className = "small";
         document.getElementById("reportErrorButtons").style.display = "none";
+        document.getElementById("reportIsError").style.display = "none";
+        document.getElementById("reportButtons").style.display = "none";
         break;
     }
 
@@ -43,6 +46,7 @@ plusBtn.addEventListener("click", () => {
     switch (panelSize) {
       case "small":
         document.getElementById("report").className = "medium";
+        document.getElementById("reportButtons").style.display = "block";
 
         if (condition) {
           document.getElementById("reportErrorButtons").style.display = "block";
@@ -51,6 +55,7 @@ plusBtn.addEventListener("click", () => {
         break;
       case "medium":
         document.getElementById("report").className = "full";
+        document.getElementById("reportIsError").style.display = "block";
 
         if (condition) {
           document.getElementById("reportErrorButtons").style.display = "block";
