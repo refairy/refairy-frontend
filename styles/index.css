@@ -1,5 +1,9 @@
 @import "../assets/fonts/a.css";
 
+html {
+  min-height: 100%;
+}
+
 body {
   background-color: #ffffff;
   border-top: 8px solid #646ef8;
