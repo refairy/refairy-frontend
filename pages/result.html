@@ -1,73 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/result.css" />
 
-  <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
-  <link rel="stylesheet" type="text/css" href="../styles/result.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../components/Button/Button.css"
+    />
 
-  <link rel="stylesheet" type="text/css" href="../components/Button/Button.css" />
+    <title>Refairy</title>
+  </head>
 
-  <title>Refairy</title>
-</head>
-
-<body>
-  <div id="report" class="full">
-    <div id="reportResult">
-      <div id="reportSizeControler">
-        <img id="makeSmall" src="../images/minus.svg" />
-        <img id="makeBig" src="../images/plus.svg" />
-      </div>
-
-      <div id="reportTitleWrap">
-        <div id="reportTitle">오류 보고서</div>
-        <div id="reportID">A123</div>
-      </div>
-
-      <div id="reportURL">
-        <img src="../images/chain.svg" />
-        <span>www.mofa.go.jp/region/asia-paci/takeshima/index.html</span>
-      </div>
-
-      <div id="reportCount">
-        <img src="../images/bar.svg" />
-        217개
-      </div>
-
-      <div id="reportButtons">
-        <div id="reportShare" class="Button blue">
-          <img class="Button__icon" src="../../images/share.svg" />
-
-          <div class="Button__text">결과 공유</div>
+  <body>
+    <div id="report" class="full">
+      <div id="reportResult">
+        <div id="reportSizeControler">
+          <img id="makeSmall" src="../images/minus.svg" />
+          <img id="makeBig" src="../images/plus.svg" />
         </div>
 
-        <div id="reportSave">PDF로 저장</div>
-      </div>
+        <div id="reportTitleWrap">
+          <div id="reportTitle">오류 보고서</div>
+          <div id="reportID">A123</div>
+        </div>
 
-      <div id="reportSentences">
-        <span class="reportSentence">
-          독도의 옆에는 흔히 불리는 죽도라는 섬이 있습니다. 그리고 존맛탱
-        </span>
-        <span class="reportSentence">
-          오늘도 리앙쿠르 암초에서는 강치가 죽어갑니다
-        </span>
-      </div>
+        <div id="reportURL">
+          <img src="../images/chain.svg" />
+          <span>www.mofa.go.jp/region/asia-paci/takeshima/index.html</span>
+        </div>
 
-      <div id="reportError">
-        <img id="reportErrorIcon" src="../images/exclamation.svg" />
-        결과에 문제가 있나요?
+        <div id="reportCount">
+          <img src="../images/bar.svg" />
+          217개
+        </div>
+
+        <div id="reportButtons">
+          <div id="reportShare" class="Button blue">
+            <img class="Button__icon" src="../../images/share.svg" />
+
+            <div class="Button__text">결과 공유</div>
+          </div>
+
+          <div id="reportSave">PDF로 저장</div>
+        </div>
+
+        <div id="reportSentences">
+          <div class="reportSentenceWrap">
+            <label for="0" class="reportSentence">
+              독도의 옆에는 흔히 불리는 죽도라는 섬이 있습니다. 그리고 존맛탱
+            </label>
+          </div>
+
+          <div class="reportSentenceWrap">
+            <label for="1" class="reportSentence">
+              오늘도 리앙쿠르 암초에서는 강치가 죽어갑니다
+            </label>
+          </div>
+        </div>
+
+        <div id="reportIsError">
+          <img id="reportIsErrorIcon" src="../images/exclamation.svg" />
+          결과에 문제가 있나요?
+        </div>
+
+        <div id="reportErrorButtons">
+          <div id="reportError" class="Button pink">
+            <img class="Button__icon" src="../../images/error.svg" />
+
+            <div class="Button__text">오류 신고하기</div>
+          </div>
+
+          <div id="reportErrorBack">돌아가기</div>
+        </div>
+      </div>
+      <div id="reportHistory">
+        <div id="reportHistoryTitle">과거 검사기록</div>
+
+        <div id="reportHistoryGraph">여기에 대충 그래프 있음</div>
       </div>
     </div>
-    <div id="reportHistory">
-      <div id="reportHistoryTitle">과거 검사기록</div>
 
-      <div id="reportHistoryGraph">여기에 대충 그래프 있음</div>
-    </div>
-  </div>
-  <div id="view"></div>
-  <script type="text/javascript" src="../scripts/result/report.js"></script>
-</body>
+    <div id="view"></div>
 
+    <script type="text/javascript" src="../scripts/result/report.js"></script>
+  </body>
 </html>
