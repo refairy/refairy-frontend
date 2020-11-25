@@ -46,20 +46,22 @@ plusBtn.addEventListener("click", () => {
     switch (panelSize) {
       case "small":
         document.getElementById("report").className = "medium";
-        document.getElementById("reportButtons").style.display = "block";
 
         if (condition) {
           document.getElementById("reportErrorButtons").style.display = "block";
+        } else {
+          document.getElementById("reportButtons").style.display = "block";
         }
 
         break;
       case "medium":
         document.getElementById("report").className = "full";
-        document.getElementById("reportIsError").style.display = "block";
 
         if (condition) {
           document.getElementById("reportErrorButtons").style.display = "block";
           document.getElementById("reportErrorBack").style.display = "flex";
+        } else {
+          document.getElementById("reportIsError").style.display = "block";
         }
 
         break;
