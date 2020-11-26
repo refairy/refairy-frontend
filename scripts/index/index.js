@@ -11,3 +11,9 @@ Array.from(document.getElementsByClassName("SearchHistory")).forEach(function (
     window.location.href = "./result";
   });
 });
+
+const searchButton = document.getElementById("searchButton");
+
+searchButton.addEventListener("click", () => {
+  window.location.href = "./result";
+});

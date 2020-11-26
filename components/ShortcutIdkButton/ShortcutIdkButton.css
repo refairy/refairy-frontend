@@ -11,7 +11,6 @@ html {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 15px 33px;
   cursor: pointer;
 
   color: #808080;

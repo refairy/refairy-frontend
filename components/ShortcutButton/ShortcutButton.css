@@ -8,26 +8,46 @@ body {
 .ShortcutButton {
   width: fit-content;
 
+  padding: 15px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 15px 33px;
   cursor: pointer;
 
   color: #fff;
-  background-color: #646ef8;
+  background-color: #606060;
   border-radius: 12px;
+}
+
+.ShortcutButton.blue {
+  padding: 15px 33px;
+}
+
+.blue {
+  background-color: #646ef8;
+}
+
+.pink {
+  background-color: #ff6c6c;
 }
 
 .ShortcutButton__number {
   padding: 2px 5px;
 
-  color: #646ef8;
+  color: #606060;
   font-size: 15px;
   font-family: "a18";
 
   border-radius: 6px;
   background-color: rgba(255, 255, 255, 0.7);
+}
+
+.blue > .ShortcutButton__number {
+  color: #646ef8;
+}
+
+.pink > .ShortcutButton__number {
+  color: #ff6c6c;
 }
 
 .ShortcutButton__text {
