@@ -116,6 +116,25 @@ reportErrorBack.addEventListener("click", () => {
   });
 });
 
+const prevButton = document.getElementById("prevButton");
+prevButton.addEventListener("click", () => {
+  window.location.href = "./";
+});
+
+const reportShare = document.getElementById("reportShare");
+reportShare.addEventListener("click", () => {
+  document.getElementById("report").style.filter = "blur(6px)";
+  document.getElementById("view").style.filter = "blur(6px)";
+  document.getElementById("modalBackground").style.display = "flex";
+});
+
+const cancelBtn = document.getElementById("cancelBtn");
+cancelBtn.addEventListener("click", () => {
+  document.getElementById("report").style.filter = "";
+  document.getElementById("view").style.filter = "";
+  document.getElementById("modalBackground").style.display = "none";
+});
+
 window.onload = () => {
   resizeButtonControl();
 };
