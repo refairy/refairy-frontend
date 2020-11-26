@@ -135,6 +135,17 @@ cancelBtn.addEventListener("click", () => {
   document.getElementById("modalBackground").style.display = "none";
 });
 
+const modalShareURL = document.getElementById("modalShareURL");
+modalShareURL.addEventListener("click", function () {
+  var tempElem = document.createElement("textarea");
+  tempElem.value = document.getElementById("copy").innerText;
+  document.body.appendChild(tempElem);
+  tempElem.select();
+  document.execCommand("copy");
+  document.body.removeChild(tempElem);
+  alert("Copied!");
+});
+
 window.onload = () => {
   resizeButtonControl();
 };

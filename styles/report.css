@@ -457,6 +457,13 @@ body {
   margin-right: 6px;
 }
 
+#modalShareButtons {
+  width: 210px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 #modalShareButtons > img {
   cursor: pointer;
   margin: 0px 24px;
@@ -468,4 +475,18 @@ body {
 
 #modalShareButtons > img:last-child {
   margin-right: 0px;
+}
+
+.snsWrap {
+  height: 79px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.snsWrap > span {
+  font-family: "a15";
 }
