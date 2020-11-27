@@ -30,12 +30,12 @@
         <div id="reportTitleWrap">
           <img id="prevButton" src="../images/arrowLeft.svg" />
           <div id="reportTitle">오류 보고서</div>
-          <div id="reportID">5fbf0f8d3388b85b24599d53</div>
+          <div id="reportID">Loading ID...</div>
         </div>
 
         <div id="reportURL">
           <img src="../images/chain.svg" />
-          <span>www.mofa.go.jp/region/asia-paci/takeshima/index.html</span>
+          <span>Loading Link...</span>
         </div>
 
         <div id="reportCount">
@@ -53,19 +53,7 @@
           <div id="reportSave">PDF로 저장</div>
         </div>
 
-        <div id="reportSentences">
-          <div class="reportSentenceWrap">
-            <label for="0" class="reportSentence">
-              독도의 옆에는 흔히 불리는 죽도라는 섬이 있습니다. 그리고 존맛탱
-            </label>
-          </div>
-
-          <div class="reportSentenceWrap">
-            <label for="1" class="reportSentence">
-              오늘도 리앙쿠르 암초에서는 강치가 죽어갑니다
-            </label>
-          </div>
-        </div>
+        <div id="reportSentences"></div>
 
         <div id="reportIsError">
           <img id="reportIsErrorIcon" src="../images/exclamation.svg" />
@@ -87,26 +75,6 @@
 
         <div id="reportHistoryGraph">
           <div id="Nwagon"></div>
-          <script>
-            var options = {
-              legend: {
-                names: ["08-12", "08-19", "08-26", "09-02", "09-09", "09-16"],
-                hrefs: [],
-              },
-              dataset: {
-                title: "Playing time per day",
-                values: [[61], [76], [49], [58], [48], [56], [56]],
-                colorset: ["#1AB394"],
-                fields: ["A"],
-              },
-              chartDiv: "Nwagon",
-              chartType: "area",
-              chartSize: { width: 684, height: 300 },
-              maxValue: 100,
-              increment: 10,
-            };
-            Nwagon.chart(options);
-          </script>
         </div>
       </div>
     </div>

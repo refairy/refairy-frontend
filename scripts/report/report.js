@@ -146,6 +146,83 @@ modalShareURL.addEventListener("click", function () {
   alert("Copied!");
 });
 
+function getParam(sname) {
+  var params = location.search.substr(location.search.indexOf("?") + 1);
+  var sval = "";
+
+  params = params.split("&");
+
+  for (var i = 0; i < params.length; i++) {
+    temp = params[i].split("=");
+
+    if ([temp[0]] == sname) {
+      sval = temp[1];
+    }
+  }
+
+  return sval;
+}
+
 window.onload = () => {
   resizeButtonControl();
+
+  const reportID = getParam("id");
+
+  fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/report/" + reportID, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(function (response) {
+      switch (response.status) {
+        case 200:
+          return response.json();
+        default:
+          document.write("존재하지 않는 보고서입니다.");
+      }
+    })
+    .then(function (response) {
+      document.getElementById("reportID").innerText = reportID;
+      document.querySelector("#reportURL span").innerHTML = response.uri;
+
+      for (key in response.analysisResult) {
+        document.getElementById("reportSentences").innerHTML += `
+        <div class="reportSentenceWrap">
+          <label for="0" class="reportSentence">
+            ${response.analysisResult[key].origin}
+          </label>
+        </div>`;
+      }
+
+      let names = [],
+        values = [];
+      for (key in response.history) {
+        updatedDate = new Date(response.history[key].date);
+        updatedDate = updatedDate.getMonth() + "/" + updatedDate.getDate();
+
+        names.push(updatedDate);
+        values.push([response.history[key].amount]);
+      }
+
+      var options = {
+        legend: {
+          names: names,
+          hrefs: [],
+        },
+        dataset: {
+          title: "Playing time per day",
+          values: values,
+          colorset: ["#1AB394"],
+          fields: ["오류 기록"],
+        },
+        chartDiv: "Nwagon",
+        chartType: "area",
+        chartSize: { width: 684, height: 300 },
+        maxValue: 100,
+        increment: 10,
+      };
+
+      Nwagon.chart(options);
+    });
 };

@@ -244,11 +244,28 @@ body {
 
   background: #f9f9f9;
   border-radius: 24px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .medium #reportSentences,
 .small #reportSentences {
   display: none;
+}
+
+#reportSentences::-webkit-scrollbar {
+  width: 8px;
+}
+
+#reportSentences::-webkit-scrollbar-thumb {
+  background-color: #646ef8;
+  border-radius: 4px;
+}
+#reportSentences::-webkit-scrollbar-track {
+  background-color: #dbddff;
 }
 
 .reportSentenceWrap {
@@ -345,6 +362,11 @@ body {
   height: 250px;
 
   margin-top: 20px;
+}
+
+#Nwagon * {
+  font-family: "a12";
+  font-size: 12px;
 }
 
 #view {
