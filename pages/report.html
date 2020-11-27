@@ -6,12 +6,15 @@
 
     <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
     <link rel="stylesheet" type="text/css" href="../styles/report.css" />
+    <link rel="stylesheet" href="../styles/Nwagon.css" type="text/css" />
 
     <link
       rel="stylesheet"
       type="text/css"
       href="../components/Button/Button.css"
     />
+
+    <script src="../scripts/report/Nwagon.js"></script>
 
     <title>Refairy</title>
   </head>
@@ -82,7 +85,29 @@
       <div id="reportHistory">
         <div id="reportHistoryTitle">과거 검사기록</div>
 
-        <div id="reportHistoryGraph">여기에 대충 그래프 있음</div>
+        <div id="reportHistoryGraph">
+          <div id="Nwagon"></div>
+          <script>
+            var options = {
+              legend: {
+                names: ["08-12", "08-19", "08-26", "09-02", "09-09", "09-16"],
+                hrefs: [],
+              },
+              dataset: {
+                title: "Playing time per day",
+                values: [[61], [76], [49], [58], [48], [56], [56]],
+                colorset: ["#1AB394"],
+                fields: ["A"],
+              },
+              chartDiv: "Nwagon",
+              chartType: "area",
+              chartSize: { width: 684, height: 300 },
+              maxValue: 100,
+              increment: 10,
+            };
+            Nwagon.chart(options);
+          </script>
+        </div>
       </div>
     </div>
 
