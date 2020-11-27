@@ -219,8 +219,7 @@ window.onload = () => {
         chartDiv: "Nwagon",
         chartType: "area",
         chartSize: { width: 684, height: 300 },
-        maxValue: 100,
-        increment: 10,
+        increment: 100,
       };
 
       Nwagon.chart(options);
