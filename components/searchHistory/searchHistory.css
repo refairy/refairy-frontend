@@ -12,6 +12,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: 20px;
 
   background-color: #ffffff;
@@ -41,8 +42,14 @@ body {
   box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.08);
 }
 
+.SearchHistory__skeleton {
+  border-radius: 7px;
+  background-color: #dddddd;
+}
+
 .SearchHistory__content {
   width: 200px;
+  min-height: 114px;
 
   display: flex;
   flex-direction: column;
@@ -56,8 +63,14 @@ body {
   font-family: "a18";
 }
 
+.SearchHistory__time > .SearchHistory__skeleton {
+  width: 70px;
+  height: 14px;
+}
+
 .SearchHistory__title {
   width: 100%;
+  height: 42px;
 
   font-size: 18px;
   font-family: "a18";
@@ -72,6 +85,10 @@ body {
 
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+.SearchHistory__title > .SearchHistory__skeleton {
+  height: 62px;
 }
 
 .SearchHistory__url {
@@ -90,6 +107,10 @@ body {
   -webkit-box-orient: vertical;
 }
 
+.SearchHistory__url > .SearchHistory__skeleton {
+  height: 14px;
+}
+
 .SearchHistory__circle {
   width: 100px;
   height: 100px;
@@ -100,7 +121,7 @@ body {
   float: right;
   margin-left: 24px;
 
-  background-color: #cccccc;
+  background-color: #dddddd;
   color: #ffffff;
   font-size: 24px;
   font-family: "a18";
