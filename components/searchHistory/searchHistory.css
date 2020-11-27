@@ -16,6 +16,8 @@ body {
 
   background-color: #ffffff;
   border-radius: 12px;
+  cursor: pointer;
+  transition: 600ms cubic-bezier(0, 0.75, 0.23, 1);
 }
 
 .SearchHistory::before {
@@ -27,7 +29,16 @@ body {
   right: 0;
   z-index: -1;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.04);
+  transition: 600ms cubic-bezier(0, 0.75, 0.23, 1);
   border-radius: 12px;
+}
+
+.SearchHistory:hover {
+  transform: translateY(-4px);
+}
+
+.SearchHistory:hover::before {
+  box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.08);
 }
 
 .SearchHistory__content {
