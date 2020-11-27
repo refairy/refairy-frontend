@@ -53,7 +53,6 @@ window.onload = () => {
       return response.json();
     })
     .then(function (response) {
-      console.log(response);
       for (key in response) {
         keyID = key * 1 + 1;
 
@@ -70,9 +69,27 @@ window.onload = () => {
         ).innerHTML = response[key].uri;
 
         document
-          .querySelector("#history" + keyID)
-          .addEventListener("click", () => {
-            window.location.href = "./report?id=" + response[key]._id;
+          .querySelector("#history1")
+          .addEventListener("click", function () {
+            window.location.href = "./report?id=" + response[0]._id;
+          });
+
+        document
+          .querySelector("#history2")
+          .addEventListener("click", function () {
+            window.location.href = "./report?id=" + response[1]._id;
+          });
+
+        document
+          .querySelector("#history3")
+          .addEventListener("click", function () {
+            window.location.href = "./report?id=" + response[2]._id;
+          });
+
+        document
+          .querySelector("#history4")
+          .addEventListener("click", function () {
+            window.location.href = "./report?id=" + response[3]._id;
           });
 
         document.querySelector(
