@@ -445,15 +445,20 @@ body {
   width: 100%;
   height: 100%;
   float: right;
-  background-color: skyblue;
-  border: 3px solid rgba(0, 255, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.07);
   box-sizing: border-box;
   transition: 600ms cubic-bezier(0, 0.75, 0.23, 1);
+  overflow: hidden;
+}
+
+#view iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .full + #view {
   width: calc(100% - 783px);
-  /* border-left: 3px solid #ebebeb; */
 }
 
 .medium + #view,

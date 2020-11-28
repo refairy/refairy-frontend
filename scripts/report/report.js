@@ -163,6 +163,27 @@ function getParam(sname) {
   return sval;
 }
 
+function highlightSentence(frame, result) {
+  const els = [...[...frame.contentWindow.document.querySelectorAll('*:not(script):not(style)')]].reverse()
+  if(els.length === 5) return // init이벤트는 무시
+  
+  const highlightStyle = frame.contentWindow.document.createElement('style')
+  highlightStyle.appendChild(frame.contentWindow.document.createTextNode(`.REFAIRY_HIGHLIGHT {
+    background-color: #646ef8;
+    color: white;
+  }`))
+
+  frame.contentWindow.document.children[0].appendChild(highlightStyle)
+
+  window.frame = frame.contentWindow
+  result.forEach(e => {
+    const index = els.findIndex(el => el?.innerText.includes(e.origin))
+    if(!els[index]) return
+    els[index].innerHTML = els[index].innerHTML.split(e.origin).join(`<span class="REFAIRY_HIGHLIGHT">${e.origin}</span>`)
+    els[index] = null
+  })
+}
+
 window.onload = () => {
   resizeButtonControl();
 
@@ -185,6 +206,10 @@ window.onload = () => {
     .then(function (response) {
       document.getElementById("reportID").innerText = reportID;
       document.querySelector("#reportURL span").innerHTML = response.uri;
+      document.getElementById('view').innerHTML = `<iframe is="x-frame-bypass" src="${response.uri}"></iframe>`
+      const frame = document.getElementById('view').children[0]
+      frame.addEventListener('load', () => highlightSentence(frame, response.analysisResult))
+      document.querySelector("#view iframe").src = response.uri;
       document.querySelector("#reportCount span").innerHTML =
         response.analysisResult.length + "개";
 
