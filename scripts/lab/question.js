@@ -2,12 +2,15 @@ let i = 0;
 let pass = false;
 let response, length;
 
-// localStorage.setItem("refairyLab_historyID", "");
-
 window.onload = () => {
   const cancelBtn = document.getElementById("cancelBtn");
   cancelBtn.addEventListener("click", () => {
     window.location.href = "./";
+  });
+
+  const thanksModalBtn = document.getElementById("thanksModalDone");
+  thanksModalBtn.addEventListener("click", () => {
+    window.location.href = "../";
   });
 
   async function main() {
@@ -56,8 +59,11 @@ window.onload = () => {
 
         // 응답할 설문이 아예 없으면
         if (!boolcnt) {
-          document.getElementById("questionBox").innerHTML =
-            "더 이상 실시할 조사가 없음";
+          document.getElementById("thanksModalTitle").innerHTML =
+            "모든 설문을 완료했습니다";
+
+          document.getElementById("questionBox").style.display = "none";
+          document.getElementById("thanksModal").style.display = "flex";
 
           pass = true;
         }
@@ -95,7 +101,8 @@ window.onload = () => {
         );
 
         if (i + 1 === length) {
-          document.write("끝");
+          document.getElementById("questionBox").style.display = "none";
+          document.getElementById("thanksModal").style.display = "flex";
           return;
         }
 
@@ -130,7 +137,8 @@ window.onload = () => {
         );
 
         if (i + 1 === length) {
-          document.write("끝");
+          document.getElementById("questionBox").style.display = "none";
+          document.getElementById("thanksModal").style.display = "flex";
           return;
         }
 
@@ -165,7 +173,8 @@ window.onload = () => {
         );
 
         if (i + 1 === length) {
-          document.write("끝");
+          document.getElementById("questionBox").style.display = "none";
+          document.getElementById("thanksModal").style.display = "flex";
           return;
         }
 
@@ -187,7 +196,8 @@ window.onload = () => {
         }
 
         if (i + 1 === length) {
-          document.write("끝");
+          document.getElementById("questionBox").style.display = "none";
+          document.getElementById("thanksModal").style.display = "flex";
           return;
         }
 
@@ -228,7 +238,8 @@ window.onload = () => {
               );
 
               if (i + 1 === length) {
-                document.write("끝");
+                document.getElementById("questionBox").style.display = "none";
+                document.getElementById("thanksModal").style.display = "flex";
                 return;
               }
 
@@ -265,7 +276,8 @@ window.onload = () => {
               );
 
               if (i + 1 === length) {
-                document.write("끝");
+                document.getElementById("questionBox").style.display = "none";
+                document.getElementById("thanksModal").style.display = "flex";
                 return;
               }
 
@@ -302,7 +314,8 @@ window.onload = () => {
               );
 
               if (i + 1 === length) {
-                document.write("끝");
+                document.getElementById("questionBox").style.display = "none";
+                document.getElementById("thanksModal").style.display = "flex";
                 return;
               }
 
@@ -327,7 +340,8 @@ window.onload = () => {
               }
 
               if (i + 1 === length) {
-                document.write("끝");
+                document.getElementById("questionBox").style.display = "none";
+                document.getElementById("thanksModal").style.display = "flex";
                 return;
               }
 

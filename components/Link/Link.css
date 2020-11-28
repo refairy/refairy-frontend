@@ -46,6 +46,14 @@ html {
   opacity: 1;
 }
 
+.grayBg {
+  background-color: #606060;
+}
+
+.grayBg > * {
+  opacity: 1;
+}
+
 .blackFont {
   color: #000000;
 }
