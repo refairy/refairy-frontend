@@ -1,3 +1,5 @@
+let regex = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+
 const refairyLab = document.getElementById("refairyLab");
 
 refairyLab.addEventListener("click", () => {
@@ -5,10 +7,45 @@ refairyLab.addEventListener("click", () => {
 });
 
 const searchButton = document.getElementById("searchButton");
-
 searchButton.addEventListener("click", () => {
-  window.location.href = "./report";
+  if (regex.test(document.getElementById("searchInput").value)) {
+    let iframe = document.createElement("iframe");
+
+    iframe.setAttribute("id", "searchIframe");
+    iframe.setAttribute("name", "searchIframe");
+
+    iframe.style.width = "0px";
+    iframe.style.height = "0px";
+    iframe.src = document.getElementById("searchInput").value;
+
+    document.getElementsByTagName("body")[0].appendChild(iframe);
+
+    console.log(iframe.contentWindow.document.body);
+
+    // var myHeader = new Headers();
+    // myHeader.append("Content-Type", "application/json");
+
+    // fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/analyze", {
+    //   method: "POST",
+    //   headers: myHeader,
+    //   body: JSON.stringify({
+    //     uri: document.getElementById("searchInput").value,
+    //     sentences: ["test"],
+    //   }),
+    // });
+  } else {
+    alert("웹사이트 주소를 입력해주세요!");
+  }
 });
+
+document.getElementById("searchInput").onkeydown = function (event) {
+  if (event.keyCode === 13) {
+    if (regex.test(document.getElementById("searchInput").value)) {
+    } else {
+      alert("웹사이트 주소를 입력해주세요!");
+    }
+  }
+};
 
 function timeForToday(value) {
   const today = new Date();
@@ -35,14 +72,7 @@ function timeForToday(value) {
   return `${Math.floor(betweenTimeDay / 365)}년 전`;
 }
 
-const wordScroll = () => {
-  console.log("Timer");
-};
-
 window.onload = () => {
-  wordScroll();
-  wordScrollTimer = setInterval(wordScroll, 1000);
-
   fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/report/recents", {
     method: "GET",
     headers: {
