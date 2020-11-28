@@ -37,10 +37,13 @@ body {
 }
 
 #question {
+  min-width: 420px;
+
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 12px;
 
+  text-align: center;
   font-family: "a15";
   font-size: 18px;
   color: #666666;

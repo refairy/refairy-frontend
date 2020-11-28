@@ -9,4 +9,15 @@ window.onload = () => {
   link.addEventListener("click", () => {
     window.location.href = "../";
   });
+
+  let untilNow;
+  let untilNowStorage = localStorage.getItem("refairyLab_untilNow");
+
+  if (untilNowStorage == null) {
+    untilNow = 0;
+  } else {
+    untilNow = untilNowStorage;
+  }
+
+  document.getElementById("untilNow").innerText = untilNow;
 };
