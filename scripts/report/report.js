@@ -185,6 +185,8 @@ window.onload = () => {
     .then(function (response) {
       document.getElementById("reportID").innerText = reportID;
       document.querySelector("#reportURL span").innerHTML = response.uri;
+      document.querySelector("#reportCount span").innerHTML =
+        response.analysisResult.length + "개";
 
       for (key in response.analysisResult) {
         document.getElementById("reportSentences").innerHTML += `
@@ -194,6 +196,17 @@ window.onload = () => {
           </label>
         </div>`;
       }
+
+      if (document.getElementById("reportSentences").innerText == "") {
+        document.getElementById("reportSentences").style.display = "none";
+        document.getElementById("reportCount").style.display = "none";
+        document.getElementById("reportIsError").style.display = "none";
+        document.getElementById("reportNoError").style.display = "flex";
+      }
+
+      document.getElementById("reportButtons").style.display = "block";
+      document.getElementById("reportIsError").style.display = "block";
+      document.getElementById("reportProgress").style.display = "none";
 
       let names = [],
         values = [];
@@ -205,23 +218,28 @@ window.onload = () => {
         values.push([response.history[key].amount]);
       }
 
-      var options = {
-        legend: {
-          names: names,
-          hrefs: [],
-        },
-        dataset: {
-          title: "Playing time per day",
-          values: values,
-          colorset: ["#1AB394"],
-          fields: ["오류 기록"],
-        },
-        chartDiv: "Nwagon",
-        chartType: "area",
-        chartSize: { width: 684, height: 300 },
-        increment: 100,
-      };
+      if (names != [] && values != []) {
+        document.getElementById("Nwagon").innerText = "";
+        document.getElementById("Nwagon").style.border = "0px";
 
-      Nwagon.chart(options);
+        var options = {
+          legend: {
+            names: names,
+            hrefs: [],
+          },
+          dataset: {
+            title: "Playing time per day",
+            values: values,
+            colorset: ["#1AB394"],
+            fields: ["오류 기록"],
+          },
+          chartDiv: "Nwagon",
+          chartType: "area",
+          chartSize: { width: 684, height: 300 },
+          increment: 100,
+        };
+
+        Nwagon.chart(options);
+      }
     });
 };

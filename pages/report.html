@@ -40,7 +40,7 @@
 
         <div id="reportCount">
           <img src="../images/bar.svg" />
-          217개
+          <span>Loading Errors...</span>
         </div>
 
         <div id="reportButtons">
@@ -53,7 +53,19 @@
           <div id="reportSave">PDF로 저장</div>
         </div>
 
+        <div id="reportProgress">
+          <div id="reportProgressMsg">검사중..</div>
+          <div id="reportProgressBarWrap">
+            <div id="reportProgressBar"></div>
+          </div>
+        </div>
+
         <div id="reportSentences"></div>
+
+        <div id="reportNoError">
+          <img src="../images/noErr.svg" />
+          <span>오류가 발견되지 않았습니다</span>
+        </div>
 
         <div id="reportIsError">
           <img id="reportIsErrorIcon" src="../images/exclamation.svg" />
@@ -70,11 +82,12 @@
           <div id="reportErrorBack">돌아가기</div>
         </div>
       </div>
+
       <div id="reportHistory">
         <div id="reportHistoryTitle">과거 검사기록</div>
 
         <div id="reportHistoryGraph">
-          <div id="Nwagon"></div>
+          <div id="Nwagon">이전 검사기록이 없습니다</div>
         </div>
       </div>
     </div>
