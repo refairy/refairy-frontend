@@ -176,7 +176,9 @@ function highlightSentence(frame, result) {
   frame.contentWindow.document.children[0].appendChild(highlightStyle)
 
   window.frame = frame.contentWindow
+  window.els = els
   result.forEach(e => {
+    console.log(e)
     const index = els.findIndex(el => el?.innerText.includes(e.origin))
     if(!els[index]) return
     els[index].innerHTML = els[index].innerHTML.split(e.origin).join(`<span class="REFAIRY_HIGHLIGHT">${e.origin}</span>`)

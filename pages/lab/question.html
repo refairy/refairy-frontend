@@ -1,76 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="../../globalStyle.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../../styles/lab/question.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../../components/ShortcutButton/ShortcutButton.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../../components/ShortcutIdkButton/ShortcutIdkButton.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../../components/Link/Link.css"
-    />
+  <link rel="stylesheet" type="text/css" href="../../globalStyle.css" />
+  <link rel="stylesheet" type="text/css" href="../../styles/lab/question.css" />
 
-    <title>Refairy</title>
-  </head>
-  <body>
-    <div id="questionBox">
-      <div id="titleWrap">
-        <div id="title">옳은 문장인가요?</div>
-        <img id="cancelBtn" src="../../images/cancel.svg" />
+  <link rel="stylesheet" type="text/css" href="../../components/ShortcutButton/ShortcutButton.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/ShortcutIdkButton/ShortcutIdkButton.css" />
+  <link rel="stylesheet" type="text/css" href="../../components/Link/Link.css" />
+
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/favicons/assets/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#646EF8">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#646EF8">
+
+  <title>Refairy</title>
+</head>
+
+<body>
+  <div id="questionBox">
+    <div id="titleWrap">
+      <div id="title">옳은 문장인가요?</div>
+      <img id="cancelBtn" src="../../images/cancel.svg" />
+    </div>
+
+    <div id="question">LOADING QUESTION...</div>
+
+    <div id="answerButtons">
+      <div id="btn1" class="ShortcutButton blue">
+        <div class="ShortcutButton__number">1</div>
+        <div class="ShortcutButton__text">맞아요</div>
       </div>
 
-      <div id="question">LOADING QUESTION...</div>
-
-      <div id="answerButtons">
-        <div id="btn1" class="ShortcutButton blue">
-          <div class="ShortcutButton__number">1</div>
-          <div class="ShortcutButton__text">맞아요</div>
-        </div>
-
-        <div id="btn2" class="ShortcutButton pink">
-          <div class="ShortcutButton__number">2</div>
-          <div class="ShortcutButton__text">틀려요</div>
-        </div>
-
-        <div id="btn3" class="ShortcutButton">
-          <div class="ShortcutButton__number">3</div>
-          <div class="ShortcutButton__text">관계없어요</div>
-        </div>
+      <div id="btn2" class="ShortcutButton pink">
+        <div class="ShortcutButton__number">2</div>
+        <div class="ShortcutButton__text">틀려요</div>
       </div>
 
-      <div id="idkButton" class="ShortcutIdkButton">
-        <div class="ShortcutIdkButton__number">4</div>
-        <div class="ShortcutIdkButton__text">모르겠어요</div>
+      <div id="btn3" class="ShortcutButton">
+        <div class="ShortcutButton__number">3</div>
+        <div class="ShortcutButton__text">관계없어요</div>
       </div>
     </div>
 
-    <div id="thanksModal">
-      <img src="../../images/thumbsUp.svg" />
-      <div id="thanksModalTitle">오늘도 당신이 대한민국을 지켰습니다</div>
-
-      <div id="thanksModalDone" class="Link grayBg">
-        <div class="Link__text">끝내기</div>
-        <img class="Link__icon" src="../../images/arrowRight.svg" />
-      </div>
+    <div id="idkButton" class="ShortcutIdkButton">
+      <div class="ShortcutIdkButton__number">4</div>
+      <div class="ShortcutIdkButton__text">모르겠어요</div>
     </div>
+  </div>
 
-    <script type="text/javascript" src="../../scripts/lab/question.js"></script>
-  </body>
+  <div id="thanksModal">
+    <img src="../../images/thumbsUp.svg" />
+    <div id="thanksModalTitle">오늘도 당신이 대한민국을 지켰습니다</div>
+
+    <div id="thanksModalDone" class="Link grayBg">
+      <div class="Link__text">끝내기</div>
+      <img class="Link__icon" src="../../images/arrowRight.svg" />
+    </div>
+  </div>
+
+  <script type="text/javascript" src="../../scripts/lab/question.js"></script>
+</body>
+
 </html>
