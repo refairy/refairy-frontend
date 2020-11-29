@@ -135,6 +135,16 @@ document.getElementById("reportError").addEventListener("click", () => {
     body: JSON.stringify({
       texts: list,
     }),
+  }).then(() => {
+    condition = false;
+
+    document.getElementById("reportButtons").style.display = "block";
+    document.getElementById("reportIsError").style.display = "block";
+    document.getElementById("reportErrorButtons").style.display = "none";
+
+    Array.from(document.getElementsByTagName("input")).forEach(function (item) {
+      item.remove();
+    });
   });
 });
 
