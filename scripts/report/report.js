@@ -118,6 +118,26 @@ reportErrorBack.addEventListener("click", () => {
   });
 });
 
+document.getElementById("reportError").addEventListener("click", () => {
+  let list = [];
+
+  Array.from(document.getElementsByTagName("input")).forEach(function (input) {
+    if (input.checked) {
+      list.push(document.getElementById(input.name).innerText);
+    }
+  });
+
+  fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/analysis_error", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      texts: list,
+    }),
+  });
+});
+
 const prevButton = document.getElementById("prevButton");
 prevButton.addEventListener("click", () => {
   window.location.href = "./";
@@ -279,7 +299,7 @@ window.onload = () => {
               for (key in response.analysisResult) {
                 document.getElementById("reportSentences").innerHTML += `
                 <div class="reportSentenceWrap">
-                  <label for="0" class="reportSentence">
+                  <label id="${key}" for="${key}" class="reportSentence">
                     ${response.analysisResult[key].origin}
                   </label>
                 </div>`;
