@@ -1,108 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/index.css" />
 
-  <link rel="stylesheet" type="text/css" href="../globalStyle.css" />
-  <link rel="stylesheet" type="text/css" href="../styles/index.css" />
+    <link rel="stylesheet" type="text/css" href="../components/Link/Link.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../components/SearchHistory/SearchHistory.css"
+    />
 
-  <link rel="stylesheet" type="text/css" href="../components/Link/Link.css" />
-  <link rel="stylesheet" type="text/css" href="../components/SearchHistory/SearchHistory.css" />
+    <script type="module" src="https://unpkg.com/x-frame-bypass"></script>
 
-  <title>Refairy</title>
-</head>
+    <title>Refairy</title>
+  </head>
 
-<body>
-  <div id="header">
-    <div id="logo">Refairy</div>
-    <div id="quote">
-      오늘도 여러분들의 참여가 대한민국의
-      <span id="quoteKey">독도</span>를 지킵니다
+  <body>
+    <div id="header">
+      <div id="logo">Refairy</div>
+      <div id="quote">
+        오늘도 여러분들의 참여가 대한민국의
+        <span id="quoteKey">독도</span>를 지킵니다
+      </div>
+
+      <div id="searchBox">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="https://"
+          autocomplete="off"
+        />
+        <button id="searchButton" type="submit">
+          <img src="../images/search.svg" />
+        </button>
+      </div>
+
+      <div id="refairyLab" class="Link blackFont">
+        <div class="Link__text">Refairy 연구소</div>
+        <img class="Link__icon" src="../images/chain.svg" />
+      </div>
     </div>
 
-    <div id="searchBox">
-      <input id="searchInput" type="text" placeholder="https://" autocomplete="off" />
-      <button id="searchButton" type="submit">
-        <img src="../images/search.svg" />
-      </button>
-    </div>
-
-    <div id="refairyLab" class="Link blackFont">
-      <div class="Link__text">Refairy 연구소</div>
-      <img class="Link__icon" src="../images/chain.svg" />
-    </div>
-  </div>
-
-  <div id="searchHistoryBox">
-    <div id="searchHistoryWrap">
-      <div id="searchHistoryTitle">최근 보고서</div>
-      <div id="searchHistoryList">
-        <div id="history1" class="SearchHistory">
-          <div class="SearchHistory__content">
-            <div class="SearchHistory__time">
-              <div class="SearchHistory__skeleton"></div>
+    <div id="searchHistoryBox">
+      <div id="searchHistoryWrap">
+        <div id="searchHistoryTitle">최근 보고서</div>
+        <div id="searchHistoryList">
+          <div id="history1" class="SearchHistory">
+            <div class="SearchHistory__content">
+              <div class="SearchHistory__time">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__title">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__url">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
             </div>
-            <div class="SearchHistory__title">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
-            <div class="SearchHistory__url">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
+            <div class="SearchHistory__circle"></div>
           </div>
-          <div class="SearchHistory__circle"></div>
-        </div>
 
-        <div id="history2" class="SearchHistory">
-          <div class="SearchHistory__content">
-            <div class="SearchHistory__time">
-              <div class="SearchHistory__skeleton"></div>
+          <div id="history2" class="SearchHistory">
+            <div class="SearchHistory__content">
+              <div class="SearchHistory__time">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__title">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__url">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
             </div>
-            <div class="SearchHistory__title">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
-            <div class="SearchHistory__url">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
+            <div class="SearchHistory__circle"></div>
           </div>
-          <div class="SearchHistory__circle"></div>
-        </div>
 
-        <div id="history3" class="SearchHistory">
-          <div class="SearchHistory__content">
-            <div class="SearchHistory__time">
-              <div class="SearchHistory__skeleton"></div>
+          <div id="history3" class="SearchHistory">
+            <div class="SearchHistory__content">
+              <div class="SearchHistory__time">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__title">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__url">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
             </div>
-            <div class="SearchHistory__title">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
-            <div class="SearchHistory__url">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
+            <div class="SearchHistory__circle"></div>
           </div>
-          <div class="SearchHistory__circle"></div>
-        </div>
 
-        <div id="history4" class="SearchHistory">
-          <div class="SearchHistory__content">
-            <div class="SearchHistory__time">
-              <div class="SearchHistory__skeleton"></div>
+          <div id="history4" class="SearchHistory">
+            <div class="SearchHistory__content">
+              <div class="SearchHistory__time">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__title">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
+              <div class="SearchHistory__url">
+                <div class="SearchHistory__skeleton"></div>
+              </div>
             </div>
-            <div class="SearchHistory__title">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
-            <div class="SearchHistory__url">
-              <div class="SearchHistory__skeleton"></div>
-            </div>
+            <div class="SearchHistory__circle"></div>
           </div>
-          <div class="SearchHistory__circle"></div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script type="text/javascript" src="../scripts/index/index.js"></script>
-</body>
+    <div id="forIframe"></div>
 
+    <script type="text/javascript" src="../scripts/index/index.js"></script>
+  </body>
 </html>

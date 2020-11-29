@@ -9,30 +9,64 @@ refairyLab.addEventListener("click", () => {
 const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", () => {
   if (regex.test(document.getElementById("searchInput").value)) {
-    let iframe = document.createElement("iframe");
+    let reportURL = document.getElementById("searchInput").value;
 
-    iframe.setAttribute("id", "searchIframe");
-    iframe.setAttribute("name", "searchIframe");
+    document.getElementById(
+      "forIframe"
+    ).innerHTML = `<iframe is="x-frame-bypass" src="${
+      document.getElementById("searchInput").value
+    }" style="display: none"></iframe>`;
 
-    iframe.style.width = "0px";
-    iframe.style.height = "0px";
-    iframe.src = document.getElementById("searchInput").value;
+    const iframe = document.querySelector("iframe");
 
-    document.getElementsByTagName("body")[0].appendChild(iframe);
+    iframe.addEventListener("load", () => {
+      const els = [
+        ...[
+          ...iframe.contentWindow.document.querySelectorAll(
+            "*:not(script):not(style)"
+          ),
+        ],
+      ].reverse();
+      if (els.length === 4) return;
 
-    console.log(iframe.contentWindow.document.body);
+      let sentences = [];
 
-    // var myHeader = new Headers();
-    // myHeader.append("Content-Type", "application/json");
+      for (node of els) {
+        if (node.innerText.trim().length > 1) {
+          sentences.push(node.innerText.trim());
+        }
+      }
 
-    // fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/analyze", {
-    //   method: "POST",
-    //   headers: myHeader,
-    //   body: JSON.stringify({
-    //     uri: document.getElementById("searchInput").value,
-    //     sentences: ["test"],
-    //   }),
-    // });
+      for (a in sentences) {
+        if (sentences[a] == "") {
+          sentences.splice(a, 1);
+        }
+      }
+
+      sentences = [...new Set(sentences)];
+
+      let title = iframe.contentWindow.document.title;
+
+      var myHeader = new Headers();
+      myHeader.append("Content-Type", "application/json");
+
+      fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/analyze", {
+        method: "POST",
+        headers: myHeader,
+        body: JSON.stringify({
+          uri: reportURL,
+          sentences: sentences,
+          title: title,
+        }),
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((resa) => {
+          // console.log(sentences);
+          window.location.href = "./report?id=" + resa._id;
+        });
+    });
   } else {
     alert("웹사이트 주소를 입력해주세요!");
   }
