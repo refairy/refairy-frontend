@@ -104,8 +104,10 @@ document.getElementById("searchInput").onkeydown = function (event) {
 
       iframe.addEventListener("load", () => {
         let sentences = iframe.contentWindow.document.body.innerText
+          .replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/gi, "")
           .split("\n")
-          .map((e) => e.trim());
+          .map((e) => e.trim())
+          .filter(Boolean);
 
         let title = iframe.contentWindow.document.title;
 
