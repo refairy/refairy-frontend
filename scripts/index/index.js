@@ -7,12 +7,6 @@ refairyLab.addEventListener("click", () => {
 });
 
 const scrollTimer = () => {
-  console.log(
-    document.getElementsByClassName("quoteKey")[0].style.display +
-      document.getElementsByClassName("quoteKey")[1].style.display +
-      document.getElementsByClassName("quoteKey")[2].style.display +
-      document.getElementsByClassName("quoteKey")[3].style.display
-  );
   if (document.getElementsByClassName("quoteKey")[0].style.display == "none") {
     if (
       document.getElementsByClassName("quoteKey")[1].style.display == "none"
@@ -39,7 +33,6 @@ const scrollTimer = () => {
       document.getElementsByClassName("quoteKey")[1].style.display = "none";
     }
   } else {
-    console.log("ii");
     document.getElementsByClassName("quoteKey")[0].style.display = "none";
   }
 };
