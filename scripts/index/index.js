@@ -20,15 +20,17 @@ searchButton.addEventListener("click", () => {
     const iframe = document.querySelector("iframe");
 
     iframe.addEventListener("load", () => {
+      // 초기화이벤트는 무시!
+      if([...iframe.contentWindow.document.all].length === 5) return
+
       let sentences = iframe.contentWindow.document.body.innerText
-        .split("\n")
-        .map((e) => e.trim());
-
+        .replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "")
+        .split('\n')
+        .map(e => e.trim())
+        .filter(Boolean);
       let title = iframe.contentWindow.document.title;
-
       var myHeader = new Headers();
       myHeader.append("Content-Type", "application/json");
-
       fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/analyze", {
         method: "POST",
         headers: myHeader,
@@ -45,7 +47,7 @@ searchButton.addEventListener("click", () => {
           if (resa._id != undefined) {
             //console.log(JSON.stringify(sentences));
             sessionStorage.setItem(resa._id + "-TotalCount", sentences.length);
-            window.location.href = "./report?id=" + resa._id;
+            // window.location.href = "./report?id=" + resa._id;
           }
         });
     });
