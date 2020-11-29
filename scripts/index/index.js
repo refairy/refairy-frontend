@@ -148,7 +148,7 @@ window.onload = () => {
 
         document.querySelector(
           "#history" + keyID + " .SearchHistory__time"
-        ).innerHTML = timeForToday(response[key].updatedAt);
+        ).innerHTML = timeForToday(response[key].createdAt);
 
         document.querySelector(
           "#history" + keyID + " .SearchHistory__title"
