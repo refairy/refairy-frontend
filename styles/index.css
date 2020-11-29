@@ -10,6 +10,10 @@ body {
   padding: 40px;
 }
 
+ul {
+  list-style: none;
+}
+
 #header {
   width: 100%;
 
@@ -42,7 +46,20 @@ body {
   margin-top: 15px;
 }
 
-#quoteKey {
+#quote > div {
+  float: left;
+}
+
+#quoteUl {
+  height: 28px;
+  overflow: hidden;
+  float: left;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.quoteKey {
   font-family: "a15";
 }
 
