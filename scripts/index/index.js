@@ -20,30 +20,9 @@ searchButton.addEventListener("click", () => {
     const iframe = document.querySelector("iframe");
 
     iframe.addEventListener("load", () => {
-      const els = [
-        ...[
-          ...iframe.contentWindow.document.querySelectorAll(
-            "*:not(script):not(style)"
-          ),
-        ],
-      ].reverse();
-      if (els.length === 4) return;
-
-      let sentences = [];
-
-      for (node of els) {
-        if (node.innerText.trim().length > 1) {
-          sentences.push(node.innerText.trim());
-        }
-      }
-
-      for (a in sentences) {
-        if (sentences[a] == "") {
-          sentences.splice(a, 1);
-        }
-      }
-
-      sentences = [...new Set(sentences)];
+      let sentences = iframe.contentWindow.document.body.innerText
+        .split("\n")
+        .map((e) => e.trim());
 
       let title = iframe.contentWindow.document.title;
 
@@ -63,8 +42,11 @@ searchButton.addEventListener("click", () => {
           return res.json();
         })
         .then((resa) => {
-          // console.log(sentences);
-          window.location.href = "./report?id=" + resa._id;
+          if (resa._id != undefined) {
+            //console.log(JSON.stringify(sentences));
+            sessionStorage.setItem(resa._id + "-TotalCount", sentences.length);
+            window.location.href = "./report?id=" + resa._id;
+          }
         });
     });
   } else {
@@ -75,6 +57,48 @@ searchButton.addEventListener("click", () => {
 document.getElementById("searchInput").onkeydown = function (event) {
   if (event.keyCode === 13) {
     if (regex.test(document.getElementById("searchInput").value)) {
+      let reportURL = document.getElementById("searchInput").value;
+
+      document.getElementById(
+        "forIframe"
+      ).innerHTML = `<iframe is="x-frame-bypass" src="${
+        document.getElementById("searchInput").value
+      }" style="display: none"></iframe>`;
+
+      const iframe = document.querySelector("iframe");
+
+      iframe.addEventListener("load", () => {
+        let sentences = iframe.contentWindow.document.body.innerText
+          .split("\n")
+          .map((e) => e.trim());
+
+        let title = iframe.contentWindow.document.title;
+
+        var myHeader = new Headers();
+        myHeader.append("Content-Type", "application/json");
+
+        fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/analyze", {
+          method: "POST",
+          headers: myHeader,
+          body: JSON.stringify({
+            uri: reportURL,
+            sentences: sentences,
+            title: title,
+          }),
+        })
+          .then((res) => {
+            return res.json();
+          })
+          .then((resa) => {
+            if (resa._id != undefined) {
+              sessionStorage.setItem(
+                resa._id + "-TotalCount",
+                sentences.length
+              );
+              window.location.href = "./report?id=" + resa._id;
+            }
+          });
+      });
     } else {
       alert("웹사이트 주소를 입력해주세요!");
     }

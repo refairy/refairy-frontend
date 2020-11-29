@@ -164,109 +164,166 @@ function getParam(sname) {
 }
 
 function highlightSentence(frame, result) {
-  const els = [...[...frame.contentWindow.document.querySelectorAll('*:not(script):not(style)')]].reverse()
-  if(els.length === 5) return // init이벤트는 무시
-  
-  const highlightStyle = frame.contentWindow.document.createElement('style')
-  highlightStyle.appendChild(frame.contentWindow.document.createTextNode(`.REFAIRY_HIGHLIGHT {
+  const els = [
+    ...[
+      ...frame.contentWindow.document.querySelectorAll(
+        "*:not(script):not(style)"
+      ),
+    ],
+  ].reverse();
+  if (els.length === 5) return; // init이벤트는 무시
+
+  const highlightStyle = frame.contentWindow.document.createElement("style");
+  highlightStyle.appendChild(
+    frame.contentWindow.document.createTextNode(`.REFAIRY_HIGHLIGHT {
     background-color: #646ef8;
     color: white;
-  }`))
+  }`)
+  );
 
-  frame.contentWindow.document.children[0].appendChild(highlightStyle)
+  frame.contentWindow.document.children[0].appendChild(highlightStyle);
 
-  window.frame = frame.contentWindow
-  window.els = els
-  result.forEach(e => {
-    console.log(e)
-    const index = els.findIndex(el => el?.innerText.includes(e.origin))
-    if(!els[index]) return
-    els[index].innerHTML = els[index].innerHTML.split(e.origin).join(`<span class="REFAIRY_HIGHLIGHT">${e.origin}</span>`)
-    els[index] = null
-  })
+  window.frame = frame.contentWindow;
+  result.forEach((e) => {
+    const index = els.findIndex((el) => el?.innerText.includes(e.origin));
+    if (!els[index]) return;
+    els[index].innerHTML = els[index].innerHTML
+      .split(e.origin)
+      .join(`<span class="REFAIRY_HIGHLIGHT">${e.origin}</span>`);
+    els[index] = null;
+  });
+}
+
+function beforeExit() {
+  window.onbeforeunload = function (e) {
+    return true;
+  };
 }
 
 window.onload = () => {
   resizeButtonControl();
 
   const reportID = getParam("id");
+  const reportSentenceTotalCount =
+    sessionStorage.getItem(reportID + "-TotalCount") * 1;
 
-  fetch("https://webbackend-ffwfi5ynba-uc.a.run.app/api/report/" + reportID, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then(function (response) {
-      switch (response.status) {
-        case 200:
-          return response.json();
-        default:
-          document.write("존재하지 않는 보고서입니다.");
+  const CheckProgress = () => {
+    fetch(
+      "https://webbackend-ffwfi5ynba-uc.a.run.app/api/analyze/" + reportID,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
       }
-    })
-    .then(function (response) {
-      document.getElementById("reportID").innerText = reportID;
-      document.querySelector("#reportURL span").innerHTML = response.uri;
-      document.getElementById('view').innerHTML = `<iframe is="x-frame-bypass" src="${response.uri}"></iframe>`
-      const frame = document.getElementById('view').children[0]
-      frame.addEventListener('load', () => highlightSentence(frame, response.analysisResult))
-      document.querySelector("#view iframe").src = response.uri;
-      document.querySelector("#reportCount span").innerHTML =
-        response.analysisResult.length + "개";
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((resp) => {
+        let progressPercentage =
+          (resp.progress / reportSentenceTotalCount) * 100;
+        document.getElementById("reportProgressBar").style.width =
+          progressPercentage + "%";
 
-      for (key in response.analysisResult) {
-        document.getElementById("reportSentences").innerHTML += `
+        // console.log(resp);
+
+        if (resp.isDone) {
+          fetch(
+            "https://webbackend-ffwfi5ynba-uc.a.run.app/api/report/" + reportID,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+            .then(function (response) {
+              switch (response.status) {
+                case 200:
+                  return response.json();
+                default:
+                  document.write("존재하지 않는 보고서입니다.");
+              }
+            })
+            .then(function (response) {
+              document.getElementById("reportID").innerText = reportID;
+              document.querySelector("#reportURL span").innerHTML =
+                response.uri;
+              document.getElementById(
+                "view"
+              ).innerHTML = `<iframe is="x-frame-bypass" src="${response.uri}"></iframe>`;
+              const frame = document.getElementById("view").children[0];
+              frame.addEventListener("load", () =>
+                highlightSentence(frame, response.analysisResult)
+              );
+              document.querySelector("#view iframe").src = response.uri;
+              document.querySelector("#reportCount span").innerHTML =
+                response.analysisResult.length + "개";
+
+              for (key in response.analysisResult) {
+                document.getElementById("reportSentences").innerHTML += `
         <div class="reportSentenceWrap">
           <label for="0" class="reportSentence">
             ${response.analysisResult[key].origin}
           </label>
         </div>`;
-      }
+              }
 
-      if (document.getElementById("reportSentences").innerText == "") {
-        document.getElementById("reportSentences").style.display = "none";
-        document.getElementById("reportCount").style.display = "none";
-        document.getElementById("reportIsError").style.display = "none";
-        document.getElementById("reportNoError").style.display = "flex";
-      }
+              if (document.getElementById("reportSentences").innerText == "") {
+                document.getElementById("reportSentences").style.display =
+                  "none";
+                document.getElementById("reportCount").style.display = "none";
+                document.getElementById("reportIsError").style.display = "none";
+                document.getElementById("reportNoError").style.display = "flex";
+              }
 
-      document.getElementById("reportButtons").style.display = "block";
-      document.getElementById("reportIsError").style.display = "block";
-      document.getElementById("reportProgress").style.display = "none";
+              document.getElementById("reportButtons").style.display = "block";
+              document.getElementById("reportIsError").style.display = "block";
+              document.getElementById("reportProgress").style.display = "none";
 
-      let names = [],
-        values = [];
-      for (key in response.history) {
-        updatedDate = new Date(response.history[key].date);
-        updatedDate = updatedDate.getMonth() + "/" + updatedDate.getDate();
+              let names = [],
+                values = [];
+              for (key in response.history) {
+                updatedDate = new Date(response.history[key].date);
+                updatedDate =
+                  updatedDate.getMonth() + "/" + updatedDate.getDate();
 
-        names.push(updatedDate);
-        values.push([response.history[key].amount]);
-      }
+                names.push(updatedDate);
+                values.push([response.history[key].amount]);
+              }
 
-      if (names != [] && values != []) {
-        document.getElementById("Nwagon").innerText = "";
-        document.getElementById("Nwagon").style.border = "0px";
+              if (names != [] && values != []) {
+                document.getElementById("Nwagon").innerText = "";
+                document.getElementById("Nwagon").style.border = "0px";
 
-        var options = {
-          legend: {
-            names: names,
-            hrefs: [],
-          },
-          dataset: {
-            title: "Playing time per day",
-            values: values,
-            colorset: ["#1AB394"],
-            fields: ["오류 기록"],
-          },
-          chartDiv: "Nwagon",
-          chartType: "area",
-          chartSize: { width: 684, height: 300 },
-          increment: 100,
-        };
+                var options = {
+                  legend: {
+                    names: names,
+                    hrefs: [],
+                  },
+                  dataset: {
+                    title: "Playing time per day",
+                    values: values,
+                    colorset: ["#1AB394"],
+                    fields: ["오류 기록"],
+                  },
+                  chartDiv: "Nwagon",
+                  chartType: "area",
+                  chartSize: { width: 684, height: 300 },
+                  increment: 100,
+                };
 
-        Nwagon.chart(options);
-      }
-    });
+                Nwagon.chart(options);
+              }
+            });
+
+          clearInterval(analyzeProgressTimer);
+        }
+      });
+  };
+
+  CheckProgress();
+
+  let analyzeProgressTimer = setInterval(CheckProgress, 3000);
 };
