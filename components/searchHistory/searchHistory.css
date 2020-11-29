@@ -10,7 +10,7 @@ body {
   height: 114px;
 
   position: relative;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   padding: 20px;
@@ -19,6 +19,8 @@ body {
   border-radius: 12px;
   cursor: pointer;
   transition: 600ms cubic-bezier(0, 0.75, 0.23, 1);
+  
+  margin: 6px;
 }
 
 .SearchHistory::before {
