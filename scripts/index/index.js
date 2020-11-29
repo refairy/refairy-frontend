@@ -6,6 +6,46 @@ refairyLab.addEventListener("click", () => {
   window.location.href = "./lab";
 });
 
+const scrollTimer = () => {
+  console.log(
+    document.getElementsByClassName("quoteKey")[0].style.display +
+      document.getElementsByClassName("quoteKey")[1].style.display +
+      document.getElementsByClassName("quoteKey")[2].style.display +
+      document.getElementsByClassName("quoteKey")[3].style.display
+  );
+  if (document.getElementsByClassName("quoteKey")[0].style.display == "none") {
+    if (
+      document.getElementsByClassName("quoteKey")[1].style.display == "none"
+    ) {
+      if (
+        document.getElementsByClassName("quoteKey")[2].style.display == "none"
+      ) {
+        if (
+          document.getElementsByClassName("quoteKey")[3].style.display == "none"
+        ) {
+          for (quoteKey of document.getElementsByClassName("quoteKey")) {
+            quoteKey.style.display = "list-item";
+          }
+        } else {
+          document.getElementsByClassName("quoteKey")[3].style.display = "none";
+          for (quoteKey of document.getElementsByClassName("quoteKey")) {
+            quoteKey.style.display = "list-item";
+          }
+        }
+      } else {
+        document.getElementsByClassName("quoteKey")[2].style.display = "none";
+      }
+    } else {
+      document.getElementsByClassName("quoteKey")[1].style.display = "none";
+    }
+  } else {
+    console.log("ii");
+    document.getElementsByClassName("quoteKey")[0].style.display = "none";
+  }
+};
+
+setInterval(scrollTimer, 4000);
+
 const searchButton = document.getElementById("searchButton");
 searchButton.addEventListener("click", () => {
   if (regex.test(document.getElementById("searchInput").value)) {
@@ -21,12 +61,12 @@ searchButton.addEventListener("click", () => {
 
     iframe.addEventListener("load", () => {
       // 초기화이벤트는 무시!
-      if([...iframe.contentWindow.document.all].length === 5) return
+      if ([...iframe.contentWindow.document.all].length === 5) return;
 
       let sentences = iframe.contentWindow.document.body.innerText
-        .replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "")
-        .split('\n')
-        .map(e => e.trim())
+        .replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/gi, "")
+        .split("\n")
+        .map((e) => e.trim())
         .filter(Boolean);
       let title = iframe.contentWindow.document.title;
       var myHeader = new Headers();
