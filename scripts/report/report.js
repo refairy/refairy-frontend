@@ -72,6 +72,8 @@ plusBtn.addEventListener("click", () => {
   }
 });
 
+document.getElementById("copy").innerText = window.location.href;
+
 const reportIsError = document.getElementById("reportIsError");
 const reportSentenceForm = document.getElementById("reportSentences");
 const reportSentences = document.getElementsByClassName("reportSentence");
