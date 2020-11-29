@@ -80,7 +80,7 @@ searchButton.addEventListener("click", () => {
           if (resa._id != undefined) {
             //console.log(JSON.stringify(sentences));
             sessionStorage.setItem(resa._id + "-TotalCount", sentences.length);
-            // window.location.href = "./report?id=" + resa._id;
+            window.location.href = "./report?id=" + resa._id;
           }
         });
     });
