@@ -146,6 +146,19 @@ modalShareURL.addEventListener("click", function () {
   alert("Copied!");
 });
 
+document.getElementsByClassName("snsWrap")[0].addEventListener("click", () => {
+  window.open(
+    "https://www.facebook.com/sharer/sharer.php?u=" + window.location.href
+  );
+});
+
+document.getElementsByClassName("snsWrap")[1].addEventListener("click", () => {
+  window.open(
+    "https://twitter.com/intent/tweet?text=Refairy 검사 결과&url=" +
+      window.location.href
+  );
+});
+
 function getParam(sname) {
   var params = location.search.substr(location.search.indexOf("?") + 1);
   var sval = "";
@@ -263,11 +276,11 @@ window.onload = () => {
 
               for (key in response.analysisResult) {
                 document.getElementById("reportSentences").innerHTML += `
-        <div class="reportSentenceWrap">
-          <label for="0" class="reportSentence">
-            ${response.analysisResult[key].origin}
-          </label>
-        </div>`;
+                <div class="reportSentenceWrap">
+                  <label for="0" class="reportSentence">
+                    ${response.analysisResult[key].origin}
+                  </label>
+                </div>`;
               }
 
               if (document.getElementById("reportSentences").innerText == "") {
