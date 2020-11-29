@@ -271,6 +271,23 @@ window.onload = () => {
         document.getElementById("reportProgressBar").style.width =
           progressPercentage + "%";
 
+        document.getElementById("reportID").innerText = reportID;
+
+        fetch(
+          "https://webbackend-ffwfi5ynba-uc.a.run.app/api/report/" + reportID,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
+          .then((response) => {
+            return response.json();
+          })
+          .then((resp) => {
+            document.querySelector("#reportURL span").innerHTML = resp.uri;
+          });
         // console.log(resp);
 
         if (resp.isDone) {
@@ -292,9 +309,6 @@ window.onload = () => {
               }
             })
             .then(function (response) {
-              document.getElementById("reportID").innerText = reportID;
-              document.querySelector("#reportURL span").innerHTML =
-                response.uri;
               document.getElementById(
                 "view"
               ).innerHTML = `<iframe is="x-frame-bypass" src="${response.uri}"></iframe>`;
